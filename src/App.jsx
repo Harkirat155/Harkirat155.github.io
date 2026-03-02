@@ -31,7 +31,7 @@ const specialProjects = [
   {
     name: "Aether",
     repo: "aether",
-    live: "https://harkirat155.github.io/aether/",
+    live: "https://harkirat155.github.io/Aether/",
     github: "https://github.com/harkirat155/aether"
   }
 ];
@@ -133,6 +133,28 @@ export default function App() {
             {item}
           </article>
         ))}
+      </section>
+
+      <section className="mt-10 rounded-3xl border border-white/10 bg-slate-900/70 p-8">
+        <h2 className="text-2xl font-bold text-white">Featured Work</h2>
+        <p className="mt-3 max-w-3xl text-slate-300">
+          Explore production projects spanning developer tools, AI-native workflows, and product-first experimentation.
+        </p>
+        <div className="mt-6 grid gap-4 md:grid-cols-3">
+          {specialProjects.map((project) => (
+            <a
+              key={project.name}
+              href={project.live}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-2xl border border-cyan-200/20 bg-slate-950/60 p-5 transition hover:border-cyan-200/60"
+            >
+              <p className="text-xs uppercase tracking-[0.14em] text-cyan-200/80">Project</p>
+              <h3 className="mt-1 text-lg font-semibold text-white">{project.name}</h3>
+              <p className="mt-2 text-sm text-slate-300">Visit experience</p>
+            </a>
+          ))}
+        </div>
       </section>
 
       <section className="mt-10 grid gap-6 lg:grid-cols-[1.3fr_1fr]">
