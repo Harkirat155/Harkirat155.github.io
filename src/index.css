@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, "SF Pro Text", "Segoe UI", sans-serif;
+  color-scheme: dark;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(56, 189, 248, 0.2), transparent 32%),
+    radial-gradient(circle at 85% 0%, rgba(34, 211, 238, 0.2), transparent 30%),
+    #020617;
+  color: #e2e8f0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes cardPulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 rgba(56, 189, 248, 0);
+  }
+  50% {
+    box-shadow: 0 0 24px rgba(56, 189, 248, 0.15);
+  }
+}
+
+.project-panel {
+  transform: translateY(8px) scale(0.98);
+}
+
+.group[open] .project-panel {
+  transform: translateY(0) scale(1);
+}
+
+.project-card {
+  animation: floatIn 380ms ease-out both, cardPulse 3.4s ease-in-out infinite;
+  transition: transform 220ms ease, border-color 220ms ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(125, 211, 252, 0.85);
+}
