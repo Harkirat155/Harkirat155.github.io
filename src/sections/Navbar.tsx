@@ -21,14 +21,17 @@ export function Navbar() {
         <nav
           aria-label="Primary"
           className="flex w-full max-w-3xl items-center justify-between rounded-pill border px-4 py-2 backdrop-blur-xl sm:px-6"
-          style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}
+          style={{
+            borderColor: "var(--border)",
+            backgroundColor: "var(--bg-elevated)",
+          }}
         >
           <a
             href="#home"
             className="font-display text-sm font-semibold tracking-tight"
             style={{ color: "var(--fg)" }}
           >
-            harkirat.
+            Harkirat
           </a>
           <ul className="flex items-center gap-5 text-sm font-medium">
             {navLinks.map((link) => (
