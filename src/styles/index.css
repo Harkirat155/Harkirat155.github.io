@@ -1,0 +1,100 @@
+@import "./fonts.css";
+@import "tailwindcss";
+@import "./theme.css";
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-body);
+    transition: background-color var(--duration-base) var(--ease-signature),
+      color var(--duration-base) var(--ease-signature);
+  }
+
+  a {
+    color: inherit;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent-ink);
+    outline-offset: 2px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Aurora's ambient drifting background — pure CSS, gated to the aurora theme and
+   skipped entirely under reduced motion via the block above overriding animation-duration. */
+[data-theme="aurora"] .aurora-field {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+[data-theme="aurora"] .aurora-blob {
+  position: absolute;
+  width: 44vw;
+  height: 44vw;
+  border-radius: 999px;
+  filter: blur(90px);
+  opacity: 0.35;
+  animation: aurora-drift 26s ease-in-out infinite alternate;
+}
+
+[data-theme="aurora"] .aurora-blob:nth-child(1) {
+  top: -10%;
+  left: -10%;
+  background: var(--accent);
+  animation-delay: 0s;
+}
+
+[data-theme="aurora"] .aurora-blob:nth-child(2) {
+  top: 20%;
+  right: -15%;
+  background: var(--accent-2);
+  animation-delay: -8s;
+}
+
+[data-theme="aurora"] .aurora-blob:nth-child(3) {
+  bottom: -20%;
+  left: 20%;
+  background: #7c3aed;
+  animation-delay: -16s;
+}
+
+@keyframes aurora-drift {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(6vw, 8vw) scale(1.15);
+  }
+}
+
+/* View Transition theme-toggle reveal (see ThemeToggle.tsx) */
+::view-transition-old(root) {
+  z-index: 1;
+}
+
+::view-transition-new(root) {
+  z-index: 9999;
+}

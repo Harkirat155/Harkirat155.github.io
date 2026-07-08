@@ -1,34 +1,51 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var theme = stored === "mono" ? "mono" : "aurora";
+          document.documentElement.setAttribute("data-theme", theme);
+          document.documentElement.style.colorScheme = theme === "aurora" ? "dark" : "light";
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "aurora");
+        }
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Harkirat Singh | AI Product Engineer & Builder</title>
+    <title>Harkirat Singh | Software Engineer &amp; Builder</title>
     <meta
       name="description"
-      content="Portfolio of Harkirat Singh featuring CC, AI Native, and Aether: AI-native products, agentic systems, and high-leverage software engineering."
+      content="Personal portfolio of Harkirat Singh — a software engineer building distributed systems, realtime multiplayer infrastructure, and small programming languages. Featuring CrissCross, SupplyPulse, ai-native, and Aether."
     />
     <meta
       name="keywords"
-      content="Harkirat Singh, AI engineer, agentic systems, AI Native, CC, Aether, software portfolio, product builder"
+      content="Harkirat Singh, software engineer, distributed systems, Rust, Go, open source, CrissCross, SupplyPulse, ai-native, Aether, portfolio"
     />
     <meta name="author" content="Harkirat Singh" />
     <meta name="robots" content="index, follow, max-image-preview:large" />
     <link rel="canonical" href="https://harkirat155.github.io/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.json" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Harkirat Singh Portfolio" />
+    <meta property="og:site_name" content="Harkirat Singh" />
     <meta property="og:url" content="https://harkirat155.github.io/" />
-    <meta property="og:title" content="Harkirat Singh | AI Product Engineer & Builder" />
+    <meta property="og:title" content="Harkirat Singh | Software Engineer &amp; Builder" />
     <meta
       property="og:description"
-      content="Explore CC, AI Native, and Aether by Harkirat Singh: practical AI-native products and agentic systems."
+      content="Distributed systems, realtime multiplayer infrastructure, and small programming languages — CrissCross, SupplyPulse, ai-native, and Aether."
     />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="Harkirat Singh | AI Product Engineer & Builder" />
+    <meta property="og:image" content="https://harkirat155.github.io/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Harkirat Singh | Software Engineer &amp; Builder" />
     <meta
       name="twitter:description"
-      content="Explore CC, AI Native, and Aether by Harkirat Singh: practical AI-native products and agentic systems."
+      content="Distributed systems, realtime multiplayer infrastructure, and small programming languages — CrissCross, SupplyPulse, ai-native, and Aether."
     />
+    <meta name="twitter:image" content="https://harkirat155.github.io/og-image.png" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -39,12 +56,13 @@
             "url": "https://harkirat155.github.io/",
             "sameAs": [
               "https://github.com/harkirat155",
-              "https://linkedin.com/in/harkirat155"
+              "https://linkedin.com/in/harkirat155",
+              "https://x.com/Harkirat155"
             ]
           },
           {
             "@type": "WebSite",
-            "name": "Harkirat Singh Portfolio",
+            "name": "Harkirat Singh",
             "url": "https://harkirat155.github.io/"
           },
           {
@@ -54,20 +72,26 @@
               {
                 "@type": "ListItem",
                 "position": 1,
-                "name": "CC",
+                "name": "CrissCross",
                 "url": "https://harkirat155.github.io/cc/"
               },
               {
                 "@type": "ListItem",
                 "position": 2,
-                "name": "AI Native",
-                "url": "https://harkirat155.github.io/ai-native/"
+                "name": "SupplyPulse",
+                "url": "https://supplypulse.harkirat-hira.workers.dev"
               },
               {
                 "@type": "ListItem",
                 "position": 3,
+                "name": "ai-native",
+                "url": "https://github.com/Harkirat155/ai-native"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
                 "name": "Aether",
-                "url": "https://harkirat155.github.io/Aether/"
+                "url": "https://github.com/Harkirat155/Aether"
               }
             ]
           }
@@ -75,8 +99,8 @@
       }
     </script>
   </head>
-  <body class="bg-slate-950">
+  <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
