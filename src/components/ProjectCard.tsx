@@ -2,6 +2,8 @@ import { motion } from "motion/react";
 import type { ReactNode } from "react";
 import type { Project, ProjectLinks } from "../data/projects";
 import { useTheme } from "../hooks/useTheme";
+import { useSound } from "../hooks/useSound";
+import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion";
 import { fadeUpVariants } from "../lib/motionVariants";
 import { IconArrowUpRight, IconGithub, IconLock } from "./icons";
 
@@ -69,15 +71,32 @@ function renderLinks(links: ProjectLinks): ReactNode {
 
 export function ProjectCard({ project }: { project: Project }) {
   const { theme } = useTheme();
+  const { play } = useSound();
+  const reducedMotion = usePrefersReducedMotion();
 
   return (
     <motion.article
       id={`project-${project.slug}`}
       variants={fadeUpVariants(theme)}
+      drag={!reducedMotion}
+      dragSnapToOrigin
+      dragElastic={0.18}
+      dragTransition={{ bounceStiffness: 380, bounceDamping: 24 }}
+      whileDrag={{
+        scale: 1.04,
+        zIndex: 30,
+        boxShadow: "0 24px 48px -12px rgb(0 0 0 / 0.35)",
+      }}
+      onDragEnd={() => play("thud")}
       className={`scroll-mt-28 flex flex-col justify-between rounded-card border p-6 ${
         project.featured ? "sm:col-span-2" : ""
       }`}
-      style={{ borderColor: "var(--border)", backgroundColor: "var(--bg-elevated)" }}
+      style={{
+        borderColor: "var(--border)",
+        backgroundColor: "var(--bg-elevated)",
+        cursor: reducedMotion ? undefined : "grab",
+        touchAction: reducedMotion ? undefined : "none",
+      }}
     >
       <div>
         <h3 className="font-display text-xl font-semibold" style={{ color: "var(--fg)" }}>

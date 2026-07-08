@@ -2,6 +2,7 @@ import { motion } from "motion/react";
 import { useState } from "react";
 import { signalNodes } from "../data/signal";
 import { useTheme } from "../hooks/useTheme";
+import { useSound } from "../hooks/useSound";
 
 const RADIUS = 38;
 
@@ -15,11 +16,19 @@ function position(angleDeg: number) {
 
 export function SignalGraph() {
   const { theme } = useTheme();
+  const { play } = useSound();
   const [activeId, setActiveId] = useState<string | null>(null);
   const isAurora = theme === "aurora";
 
   const clearIfActive = (id: string) =>
     setActiveId((current) => (current === id ? null : current));
+
+  const activate = (id: string) => {
+    setActiveId((current) => {
+      if (current !== id) play("tick");
+      return id;
+    });
+  };
 
   return (
     <div className="relative mx-auto aspect-square w-full max-w-[520px] min-w-[320px]">
@@ -63,9 +72,9 @@ export function SignalGraph() {
             target={node.external ? "_blank" : undefined}
             rel={node.external ? "noreferrer" : undefined}
             aria-label={`${node.label} — see ${node.projectLabel}`}
-            onMouseEnter={() => setActiveId(node.id)}
+            onMouseEnter={() => activate(node.id)}
             onMouseLeave={() => clearIfActive(node.id)}
-            onFocus={() => setActiveId(node.id)}
+            onFocus={() => activate(node.id)}
             onBlur={() => clearIfActive(node.id)}
             className="absolute flex -translate-x-1/2 -translate-y-1/2 flex-col items-center gap-1.5 text-center"
             style={{ left: `${x}%`, top: `${y}%` }}

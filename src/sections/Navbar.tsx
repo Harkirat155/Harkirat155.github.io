@@ -1,4 +1,5 @@
 import { ThemeToggle } from "../components/ThemeToggle";
+import { SoundToggle } from "../components/SoundToggle";
 
 const navLinks = [
   { label: "Systems", href: "#systems" },
@@ -42,7 +43,10 @@ export function Navbar() {
               </li>
             ))}
           </ul>
-          <ThemeToggle />
+          <div className="flex items-center gap-2">
+            <SoundToggle />
+            <ThemeToggle />
+          </div>
         </nav>
       </header>
     </>

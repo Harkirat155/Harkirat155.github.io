@@ -1,5 +1,6 @@
 import { MotionConfig } from "motion/react";
 import { ThemeProvider } from "./context/ThemeContext";
+import { SoundProvider } from "./context/SoundContext";
 import { CursorField } from "./components/CursorField";
 import { Navbar } from "./sections/Navbar";
 import { Hero } from "./sections/Hero";
@@ -11,22 +12,24 @@ import { Footer } from "./sections/Footer";
 export default function App() {
   return (
     <ThemeProvider>
-      <MotionConfig reducedMotion="user">
-        <div aria-hidden="true" className="aurora-field">
-          <div className="aurora-blob" />
-          <div className="aurora-blob" />
-          <div className="aurora-blob" />
-        </div>
-        <CursorField />
-        <Navbar />
-        <main id="main-content">
-          <Hero />
-          <SignalMap />
-          <Projects />
-          <Contact />
-        </main>
-        <Footer />
-      </MotionConfig>
+      <SoundProvider>
+        <MotionConfig reducedMotion="user">
+          <div aria-hidden="true" className="aurora-field">
+            <div className="aurora-blob" />
+            <div className="aurora-blob" />
+            <div className="aurora-blob" />
+          </div>
+          <CursorField />
+          <Navbar />
+          <main id="main-content">
+            <Hero />
+            <SignalMap />
+            <Projects />
+            <Contact />
+          </main>
+          <Footer />
+        </MotionConfig>
+      </SoundProvider>
     </ThemeProvider>
   );
 }

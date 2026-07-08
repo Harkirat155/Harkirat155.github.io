@@ -1,12 +1,15 @@
 import { motion } from "motion/react";
 import type { MouseEvent } from "react";
 import { useTheme } from "../hooks/useTheme";
+import { useSound } from "../hooks/useSound";
 
 export function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
+  const { play } = useSound();
   const isAurora = theme === "aurora";
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
+    play("click");
     toggleTheme({ x: event.clientX, y: event.clientY });
   };
 
