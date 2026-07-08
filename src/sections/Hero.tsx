@@ -1,6 +1,7 @@
 import { motion } from "motion/react";
 import { useTheme } from "../hooks/useTheme";
 import { fadeUpVariants, staggerContainer } from "../lib/motionVariants";
+import { GenerativeHeroField } from "../components/GenerativeHeroField";
 
 export function Hero() {
   const { theme } = useTheme();
@@ -9,13 +10,30 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex min-h-screen flex-col items-start justify-center px-6 pt-32 pb-24 sm:px-10"
+      className="relative flex min-h-screen flex-col items-start justify-center overflow-hidden px-6 pt-32 pb-24 sm:px-10"
     >
+      <div style={{ zIndex: 0 }} className="absolute inset-0">
+        <GenerativeHeroField />
+      </div>
+
+      <a
+        href="#project-animations"
+        className="font-label absolute right-6 top-24 z-10 hidden items-center gap-1.5 rounded-pill border px-3 py-1.5 text-[10px] uppercase tracking-[0.1em] backdrop-blur-sm transition-colors sm:right-10 sm:flex"
+        style={{ borderColor: "var(--border)", color: "var(--fg-muted)", backgroundColor: "var(--bg-elevated)" }}
+      >
+        <span
+          aria-hidden="true"
+          className="h-1.5 w-1.5 rounded-full"
+          style={{ backgroundColor: "var(--accent)" }}
+        />
+        Live from my animations engine ↗
+      </a>
+
       <motion.div
         variants={staggerContainer(theme)}
         initial="hidden"
         animate="visible"
-        className="mx-auto w-full max-w-4xl"
+        className="relative z-10 mx-auto w-full max-w-4xl"
       >
         <motion.p
           variants={item}
@@ -77,7 +95,7 @@ export function Hero() {
         initial="hidden"
         animate="visible"
         aria-hidden="true"
-        className="font-label absolute bottom-10 left-1/2 hidden -translate-x-1/2 items-center gap-2 text-[11px] uppercase tracking-[0.2em] sm:flex"
+        className="font-label absolute bottom-10 left-1/2 z-10 hidden -translate-x-1/2 items-center gap-2 text-[11px] uppercase tracking-[0.2em] sm:flex"
         style={{ color: "var(--fg-muted)" }}
       >
         Scroll

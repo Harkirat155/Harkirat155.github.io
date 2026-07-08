@@ -65,7 +65,7 @@ export const projects: Project[] = [
     slug: "animations",
     title: "animations",
     description:
-      "A generative-art pipeline — 26 seeded templates spanning math and nature, plus a composer UI to preview and tweak every parameter live.",
+      "A generative-art pipeline — 26 seeded templates spanning math and nature, plus a composer UI to preview and tweak every parameter live. The flow-field template above, in the hero, is one of them — ported live into this page.",
     tags: ["Python", "FastAPI", "React"],
     links: { kind: "none" },
   },
