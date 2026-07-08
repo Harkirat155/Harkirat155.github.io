@@ -4,7 +4,7 @@ import { signalNodes } from "../data/signal";
 import { useTheme } from "../hooks/useTheme";
 import { useSound } from "../hooks/useSound";
 
-const RADIUS = 38;
+const RADIUS = 34;
 
 function position(angleDeg: number) {
   const rad = (angleDeg * Math.PI) / 180;
@@ -31,7 +31,7 @@ export function SignalGraph() {
   };
 
   return (
-    <div className="relative mx-auto aspect-square w-full max-w-[520px] min-w-[320px]">
+    <div className="relative mx-auto aspect-square w-full max-w-[520px]">
       <svg viewBox="0 0 100 100" className="pointer-events-none absolute inset-0 h-full w-full" aria-hidden="true">
         {signalNodes.map((node) => {
           const { x, y } = position(node.angle);
@@ -100,7 +100,7 @@ export function SignalGraph() {
               }
             />
             <span
-              className="font-label whitespace-nowrap rounded-pill border px-2 py-1 text-[10px] uppercase tracking-[0.06em] transition-colors"
+              className="font-label w-20 text-center rounded-pill border px-2 py-1 text-[10px] uppercase leading-tight tracking-[0.06em] transition-colors sm:w-auto sm:whitespace-nowrap"
               style={{
                 borderColor: active ? "var(--accent)" : "var(--border)",
                 color: active ? "var(--accent-ink)" : "var(--fg-muted)",
